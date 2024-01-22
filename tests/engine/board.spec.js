@@ -17,12 +17,12 @@ describe('Board', () => {
             // Arrange
             const pawn = new Pawn(Player.WHITE);
             const square = Square.at(0, 0);
-
+           
             // Act
-            board.setPiece(square, pawn);
+         board.setPiece(square, pawn)
 
             // Assert
-            board.getPiece(square).should.equal(pawn); // Object equality: same object reference
+           board.getPiece(square).should.equal(pawn); // Object equality: same object reference
         });
 
         it('can be found on the board', () => {
@@ -34,7 +34,8 @@ describe('Board', () => {
             board.setPiece(square, pawn);
 
             // Assert
-            board.findPiece(pawn).should.eql(square); // Object equivalence: different objects, same data
+            board.findPiece(pawn).should.eql(square);
+            // Object equivalence: different objects, same data
         });
 
     });

@@ -70,8 +70,7 @@ describe('Pawn', () => {
         board.setPiece(Square.at(5, 3), blockingPiece);
 
         const moves = pawn.getAvailableMoves(board);
-
-        moves.should.be.empty;
+         moves.should.be.empty;
     });
 
     it('cannot move two squares if there is a piece two sqaures in front', () => {
@@ -81,6 +80,7 @@ describe('Pawn', () => {
         board.setPiece(Square.at(4, 3), blockingPiece);
 
         const moves = pawn.getAvailableMoves(board);
+        console.log(moves)
 
         moves.should.not.deep.include(Square.at(4, 3));
     });

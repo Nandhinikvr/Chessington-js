@@ -15,7 +15,7 @@ export default class Pawn extends Piece {
             else 
             return [Square.at(location.row + 1, location.col),Square.at(location.row + 2, location.col)]
         } else {
-            if(location.row <=5 ) return [Square.at(location.row - 1, location.col)]
+            if(location.row <6 ) return [Square.at(location.row - 1, location.col)]
             else return [Square.at(location.row - 1, location.col),Square.at(location.row - 2, location.col)]
             
         }

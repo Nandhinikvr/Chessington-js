@@ -1,32 +1,67 @@
 import Piece from './piece';
 import Square from '../square';
+import Player from '../player';
+import Pawn from './pawn';
 
 
 export default class Rook extends Piece {
     constructor(player) {
-        super(player,false);
+        super(player, false);
     }
 
     getAvailableMoves(board) {
         let location = board.findPiece(this)
-        let availableMoves=[]
+        let availableMoves = []
+        let piecePresent = false;
+        let removeValue
+        var valueDict = [];
 
-        for(let row=0;row <8;row++)
-        {
-            for(let col=0; col<8;col++)
-            {
-                if(row === location.row || col ===location.col )
-                {
-                    if(!(row === location.row && col ===location.col) )
-                    availableMoves.push(Square.at(row, col))
+        for (let row = 0; row < 8; row++) {   //4
+            for (let col = 0; col < 8; col++) {   // 6
+                if (row === location.row || col === location.col) {
+                    if (!(row === location.row && col === location.col)) {
+                        availableMoves.push(Square.at(row, col))
+                        valueDict.push(row, col)
+                    }
+                    
+                  
                 }
             }
-        }   
-         return availableMoves
+        }
+         removeValue=this.blockingPieceInArray(valueDict, board);
+      if (removeValue.length>0) {
+            let value = "" + removeValue;
+            this.removeItem(availableMoves, value)
+            return availableMoves
+        }
+    
+        return availableMoves
     }
 
-    
-
-
-
+    removeItem(arr, value) {
+        var i = 0;
+        while (i < arr.length) {
+            if (arr[i] == value) {
+                arr.splice(i+1, 1);
+                break;
+            } else {
+                ++i;
+            }
+        }
+        return arr;
+    }
+    blockingPieceInArray(arr, board) {
+        let blockingPiece = []
+        let location = board.findPiece(this)
+        let index=0;
+        while( index<arr.length) { 
+            let piece=board.getPiece(Square.at(arr[index], arr[index + 1]))
+        if (!(piece === undefined))
+            {
+                blockingPiece.push(Square.at(arr[index], arr[index + 1]))       
+            }
+        index = index+2;
+        }
+        return blockingPiece
+    }
 }

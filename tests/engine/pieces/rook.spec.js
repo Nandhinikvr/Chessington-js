@@ -22,7 +22,7 @@ describe('Rook', () => {
             // Vertical
             Square.at(0, 2), Square.at(2, 2), Square.at(3, 2), Square.at(4, 2), Square.at(5, 2), Square.at(6, 2), Square.at(7, 2)
         ];
-
+        console.log(`MOves${moves}`)
         moves.should.deep.include.members(expectedMoves);
     });
 
@@ -31,6 +31,7 @@ describe('Rook', () => {
         board.setPiece(Square.at(1, 2), rook);
 
         const moves = rook.getAvailableMoves(board);
+        console.log(`MOves${moves}`)
 
         moves.should.have.length(14);
     });
@@ -42,6 +43,7 @@ describe('Rook', () => {
         board.setPiece(Square.at(4, 6), friendlyPiece);
 
         const moves = rook.getAvailableMoves(board);
+        console.log(`MOves${moves}`)
 
         moves.should.not.deep.include(Square.at(4, 7));
     });
@@ -53,6 +55,7 @@ describe('Rook', () => {
         board.setPiece(Square.at(4, 6), opposingPiece);
 
         const moves = rook.getAvailableMoves(board);
+        console.log(`MOves${moves}`)
 
         moves.should.not.deep.include(Square.at(4, 7));
     });

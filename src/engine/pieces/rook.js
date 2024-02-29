@@ -50,18 +50,5 @@ export default class Rook extends Piece {
         }
         return arr;
     }
-    blockingPieceInArray(arr, board) {
-        let blockingPiece = []
-        let location = board.findPiece(this)
-        let index=0;
-        while( index<arr.length) { 
-            let piece=board.getPiece(Square.at(arr[index], arr[index + 1]))
-        if (!(piece === undefined))
-            {
-                blockingPiece.push(Square.at(arr[index], arr[index + 1]))       
-            }
-        index = index+2;
-        }
-        return blockingPiece
-    }
+    
 }
